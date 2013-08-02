@@ -20,5 +20,16 @@ public class PersonServiceBean implements PersonService {
 		//personDao.add();
 	}
 	
+	public void init(){
+		System.out.println("我被初始化了！");
+	}
+	
+	public PersonServiceBean(){
+		System.out.println("我被实例化了！");
+	}
+	
+	public void distory(){
+		System.out.println("对象被销毁了！");
+	}
 	
 }

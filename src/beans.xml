@@ -3,8 +3,11 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
            http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
-        <bean id="personDao" class="cn.itcast.dao.impl.PersonDaoBean"></bean>
-		<bean id="personService" class="cn.itcast.service.impl.PersonServiceBean">
-			<property name="personDao" ref="personDao"/>
-		</bean>
+        <bean id="personDao" class="cn.itcast.dao.impl.PersonDaoBean"/>
+		<bean id="personService" class="cn.itcast.service.impl.PersonServiceBean"
+		 scope="singleton" init-method="init" lazy-init="false"/>
+        <bean id="personService2" class="cn.itcast.service.impl.PersonServiceBeanFactory" factory-method="createPersonServiceBean" />
+        <bean id="PersonServiceBeanFactory" class="cn.itcast.service.impl.PersonServiceBeanFactory"/>
+        <bean id="personService3" factory-bean="PersonServiceBeanFactory" factory-method="createPersonServiceBean2"/>
+        
 </beans>
