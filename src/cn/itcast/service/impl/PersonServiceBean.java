@@ -16,7 +16,8 @@ public class PersonServiceBean implements PersonService {
 
 	@Override
 	public void save(){
-		personDao.add();
+		System.out.println("this is save method£¡");
+		//personDao.add();
 	}
 	
 	
