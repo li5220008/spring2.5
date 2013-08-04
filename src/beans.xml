@@ -4,7 +4,9 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
            http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
         <bean id="personDao" class="cn.itcast.dao.impl.PersonDaoBean"/>
-		<bean id="personService" class="cn.itcast.service.impl.PersonServiceBean" scope="prototype"/>
+		<bean id="personService" class="cn.itcast.service.impl.PersonServiceBean">
+			<property name="personDao" ref="personDao"></property>
+		</bean>
         <bean id="personService2" class="cn.itcast.service.impl.PersonServiceBeanFactory" factory-method="createPersonServiceBean" />
         <bean id="PersonServiceBeanFactory" class="cn.itcast.service.impl.PersonServiceBeanFactory"/>
         <bean id="personService3" factory-bean="PersonServiceBeanFactory" factory-method="createPersonServiceBean2"/>

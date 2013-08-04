@@ -3,7 +3,6 @@ package junit.test;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -16,13 +15,13 @@ public class SpringTest {
 	}
 	
 	@Test public void instanceSpring(){
-		ApplicationContext ctx = new ClassPathXmlApplicationContext("beans.xml");
+		AbstractApplicationContext ctx = new ClassPathXmlApplicationContext("beans.xml");
 		//ItcastClassPathXMLApplicationContext ctx = new ItcastClassPathXMLApplicationContext("beans.xml");
-		PersonService personService1 = (PersonService)ctx.getBean("personService");
-		PersonService personService2 = (PersonService)ctx.getBean("personService");
-		System.out.println(personService1.equals(personService2));
-		personService1.save();
-		//ctx.close();
+//		PersonService personService2 = (PersonService)ctx.getBean("personService");
+//		System.out.println(personService1.equals(personService2));
+		PersonService personService = (PersonService)ctx.getBean("personService");
+		personService.save();
+		ctx.close();
 	}
 
 }

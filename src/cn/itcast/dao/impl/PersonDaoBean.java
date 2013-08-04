@@ -8,6 +8,6 @@ public class PersonDaoBean implements PersonDao {
 	 */
 	@Override
 	public void add(){
-		System.out.println("这是Add方法！");
+		System.out.println("这是PersonDaoBean Add()方法！");
 	}
 }
