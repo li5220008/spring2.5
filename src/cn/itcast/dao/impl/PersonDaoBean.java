@@ -8,6 +8,6 @@ public class PersonDaoBean implements PersonDao {
 	 */
 	@Override
 	public void add(){
-		System.out.println("Ö´ĞĞPersonDaoBeanÖĞµÄ·½·¨add()·½·¨");
+		System.out.println("è¿™æ˜¯Addæ–¹æ³•ï¼");
 	}
 }
