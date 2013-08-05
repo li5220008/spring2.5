@@ -13,21 +13,21 @@ import org.dom4j.io.SAXReader;
 
 
 /**
- * ´«ÖÇ²¥¿Í°æµÄspringÈİÆ÷ÊµÀıÀà
+ * ä¼ æ™ºæ’­å®¢ç‰ˆçš„springå®¹å™¨å®ä¾‹ç±»
  * @author Administrator
  *
  */
 public class ItcastClassPathXMLApplicationContext {
 	private List<BeanDefinition> beanDefines = new ArrayList<BeanDefinition>();
 	private Map<String,Object> sigletons = new HashMap<String, Object>(); 
-	
+
 	public ItcastClassPathXMLApplicationContext(String filename){
 		this.readXML(filename);
 		this.instanceBeans();
 	}
-	
+
 	/**
-	 * Íê³ÉÁËbeanµÄÊµÀı»¯
+	 * å®Œæˆäº†beançš„å®ä¾‹åŒ–
 	 */
 	private void instanceBeans() {
 		for(BeanDefinition beanDefine : beanDefines){
@@ -40,7 +40,7 @@ public class ItcastClassPathXMLApplicationContext {
 		}
 	}
 	/**
-	 * ¶ÁÈ¡ÅäÖÃÎÄ¼ş
+	 * è¯»å–é…ç½®æ–‡ä»¶
 	 * @param filename
 	 */
 	private void readXML(String filename) {
@@ -50,13 +50,13 @@ public class ItcastClassPathXMLApplicationContext {
          URL xmlpath = this.getClass().getClassLoader().getResource(filename);
          document = saxReader.read(xmlpath);
          Map<String,String> nsMap = new HashMap<String,String>();
-         nsMap.put("ns","http://www.springframework.org/schema/beans");//¼ÓÈëÃüÃû¿Õ¼ä
-         XPath xsub = document.createXPath("//ns:beans/ns:bean");//´´½¨beans/bean²éÑ¯Â·¾¶
-         xsub.setNamespaceURIs(nsMap);//ÉèÖÃÃüÃû¿Õ¼ä
-         List<Element> beans = xsub.selectNodes(document);//»ñÈ¡ÎÄµµÏÂËùÓĞbean½Úµã 
+         nsMap.put("ns","http://www.springframework.org/schema/beans");//åŠ å…¥å‘½åç©ºé—´
+         XPath xsub = document.createXPath("//ns:beans/ns:bean");//åˆ›å»ºbeans/beanæŸ¥è¯¢è·¯å¾„
+         xsub.setNamespaceURIs(nsMap);//è®¾ç½®å‘½åç©ºé—´
+         List<Element> beans = xsub.selectNodes(document);//è·å–æ–‡æ¡£ä¸‹æ‰€æœ‰beanèŠ‚ç‚¹ 
          for(Element element: beans){
-            String id = element.attributeValue("id");//»ñÈ¡idÊôĞÔÖµ
-            String clazz = element.attributeValue("class"); //»ñÈ¡classÊôĞÔÖµ        
+            String id = element.attributeValue("id");//è·å–idå±æ€§å€¼
+            String clazz = element.attributeValue("class"); //è·å–classå±æ€§å€¼        
             BeanDefinition beanDefine = new BeanDefinition(id, clazz);
             beanDefines.add(beanDefine);
          }   
@@ -64,9 +64,9 @@ public class ItcastClassPathXMLApplicationContext {
             e.printStackTrace();
         }
 	}
-	
+
 	/**
-	 * »ñÈ¡beanÊµÀı
+	 * è·å–beanå®ä¾‹
 	 * @param beanName
 	 * @return
 	 */
