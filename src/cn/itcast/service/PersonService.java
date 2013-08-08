@@ -1,7 +1,7 @@
 package cn.itcast.service;
 
 public interface PersonService {
-
-	public abstract void save();
-
+	public void save(String name);
+	public void update(String name);
+	public String setPersonName();
 }
