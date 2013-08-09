@@ -9,7 +9,7 @@ public class PersonServiceBean implements PersonService {
 	@Override
 	public void save(String name) {
 		System.out.println("我是save()方法");
-		throw new RuntimeException("我爱例外");
+		//throw new RuntimeException("我爱例外");
 	}
 
 	@Override

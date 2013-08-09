@@ -18,7 +18,7 @@ public class SpringAOPTest {
 	public void interceptorTest(){
 		ApplicationContext cxt = new ClassPathXmlApplicationContext("beans.xml");
 		PersonService personService = (PersonService)cxt.getBean("personService");
-		personService.save("user");
+		personService.setPersonName();
 	}
 
 }
