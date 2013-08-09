@@ -37,10 +37,10 @@ public class PersonServiceBean implements PersonService {
 	}
 
 	@Override
+	@SuppressWarnings("unchecked")
 	public List<Person> getPersons() {
-		Person person = (Person)jdbcTemplate.queryForObject(sql, rowMapper)("select * from person",  new Object[]{personid}, 
-				new PersonRowMapper());
-		return null;
+		List<Person> persons = (List<Person>)jdbcTemplate.query("select * from person",new PersonRowMapper());
+		return persons;
 	}
 
 	@Override
