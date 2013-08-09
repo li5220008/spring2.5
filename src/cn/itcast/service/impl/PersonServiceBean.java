@@ -1,27 +1,46 @@
 package cn.itcast.service.impl;
 
+import java.util.List;
 
+import javax.activation.DataSource;
 
+import cn.itcast.bean.Person;
 import cn.itcast.service.PersonService;
 
 public class PersonServiceBean implements PersonService {
-
-	@Override
-	public void save(String name) {
-		System.out.println("我是save()方法");
-		//throw new RuntimeException("我爱例外");
+	private DataSource dataSource;
+	public void setDataSource(DataSource dataSource) {
+		this.dataSource = dataSource;
 	}
 
 	@Override
-	public void update(String name) {
-		System.out.println("我是update()方法");
+	public void save(Person person) {
+		// TODO Auto-generated method stub
+
 	}
 
 	@Override
-	public String setPersonName() {
-		System.out.println("我是setPersonName()方法");
-		return "xxxx";
+	public void update(Person person) {
+		// TODO Auto-generated method stub
+
 	}
-	
-	
+
+	@Override
+	public String getPerson(Integer personid) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Person> getPersons() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void delete(Integer personid) {
+		// TODO Auto-generated method stub
+
+	}
+
 }

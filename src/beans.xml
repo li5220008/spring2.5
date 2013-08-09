@@ -31,8 +31,7 @@
 		</bean>
 		<tx:annotation-driven transaction-manager="txManager"/>
 		          
-		<aop:aspectj-autoproxy/>
-		<bean id="myInterceptor" class="cn.itcast.service.MyInterceptor"/>
-		<bean id="personService" class="cn.itcast.service.impl.PersonServiceBean"/>
-		           
+		<bean id="personService" class="cn.itcast.service.impl.PersonServiceBean">
+			<property name="dataSource" ref="dataSource"/>
+		</bean>		           
 </beans>
