@@ -2,45 +2,51 @@ package cn.itcast.service.impl;
 
 import java.util.List;
 
-import javax.activation.DataSource;
+import javax.sql.DataSource;
+
+import org.springframework.jdbc.core.JdbcTemplate;
 
 import cn.itcast.bean.Person;
 import cn.itcast.service.PersonService;
 
 public class PersonServiceBean implements PersonService {
-	private DataSource dataSource;
+	private JdbcTemplate jdbcTemplate;
 	public void setDataSource(DataSource dataSource) {
-		this.dataSource = dataSource;
+		this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 
 	@Override
 	public void save(Person person) {
-		// TODO Auto-generated method stub
-
+		jdbcTemplate.update("insert into person(name) values(?) ", new Object[]{person.getName()}, 
+				new int[]{java.sql.Types.VARCHAR});
 	}
 
 	@Override
 	public void update(Person person) {
-		// TODO Auto-generated method stub
+		jdbcTemplate.update("update person set name=? wherr id=?", new Object[]{person.getName(),
+				person.getId()}, 
+				new int[]{java.sql.Types.VARCHAR, java.sql.Types.INTEGER});
 
 	}
 
 	@Override
-	public String getPerson(Integer personid) {
-		// TODO Auto-generated method stub
-		return null;
+	public Person getPerson(Integer personid) {
+		Person person = (Person)jdbcTemplate.queryForObject("select * from person where id=?",  new Object[]{personid}, 
+				new PersonRowMapper());
+		return person;
 	}
 
 	@Override
 	public List<Person> getPersons() {
-		// TODO Auto-generated method stub
+		Person person = (Person)jdbcTemplate.queryForObject(sql, rowMapper)("select * from person",  new Object[]{personid}, 
+				new PersonRowMapper());
 		return null;
 	}
 
 	@Override
 	public void delete(Integer personid) {
-		// TODO Auto-generated method stub
-
+		jdbcTemplate.update("delete from person where id=?", new Object[]{personid}, 
+				new int[]{java.sql.Types.INTEGER});
 	}
 
 }

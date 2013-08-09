@@ -20,7 +20,7 @@ public interface PersonService {
 	 * @param personid
 	 * @return
 	 */
-	public String getPerson(Integer personid);
+	public Person getPerson(Integer personid);
 	/**
 	 * 
 	 * @return
