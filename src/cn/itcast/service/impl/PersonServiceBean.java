@@ -5,10 +5,12 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.transaction.annotation.Transactional;
 
 import cn.itcast.bean.Person;
 import cn.itcast.service.PersonService;
 
+@Transactional
 public class PersonServiceBean implements PersonService {
 	private JdbcTemplate jdbcTemplate;
 	public void setDataSource(DataSource dataSource) {
